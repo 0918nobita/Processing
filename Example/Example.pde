@@ -19,23 +19,28 @@ void setup() {
 int red = 0, green = 0, blue = 0;
 
 void draw() {
-  if (mousePressed) {
-    fill(0);
-    for (int i = 0; i <= 3; i++) switch ((int)random(3)) {
-      case 0:
-        red++;
-        if (red > 255) red = 0;
-        break;
-      case 1:
-        green++;
-        if (green > 255) green = 0;
-        break;
-      case 2:
-        blue++;
-        if (blue > 255) blue = 0;
-        break;
-    }
-    fill(red, green, blue);
-  } else fill(255);
+  if (!mousePressed) for (int i = 0; i <= 10; i++) switch ((int)random(6)) {
+    case 0:
+      if (red <= 255) ++red;
+      break;
+    case 1:
+      if (green <= 255) ++green;
+      break;
+    case 2:
+      if (blue <= 255) ++blue;
+      break;
+    case 3:
+      if (red > 0) --red;
+      break;
+    case 4:
+      if (green > 0) --green;
+      break;
+    case 5:
+      if (blue > 0) --blue;
+      break;
+  } else {
+    red = 0; green = 0; blue = 0;
+  }
+  fill(red, green, blue);
   ellipse(mouseX, mouseY, 80, 80);
 }
