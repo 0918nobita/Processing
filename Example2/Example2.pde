@@ -2,14 +2,11 @@ void setup() {
   size(300, 300);
 }
 
-boolean mode = false;
+float angle = 0.0;
 
 void draw() {
-  if (mode) translate(mouseX, mouseY);
-  else rotate(mouseX / 100.0);
-  rect(0, 0, 30, 30);
-}
-
-void keyPressed() {
-  if (key == ' ') mode = !mode; 
+  translate(mouseX, mouseY);
+  rotate(angle);
+  rect(-15, -15, 30, 30);
+  angle += 0.1;
 }
