@@ -1,7 +1,9 @@
-size(400, 400);
-background(255, 255, 255);
+void setup() {
+  size(400, 400);
+  background(255, 255, 255);
+}
 
-fill(255, 0, 0);
-triangle(200, 100, 250, 150, 150, 150);
-fill(0, 0, 255);
-rect(170, 150, 60, 60);
+void draw() {
+  stroke(255, 0, 0);
+  ellipse(200, 150, 80, 80);
+}
