@@ -1,9 +1,18 @@
-void setup() {
-  size(400, 400);
-  background(255, 255, 255);
-}
+// 立命館大学のマーク
+size(250, 250);
+background(160, 42, 39);
 
-void draw() {
-  stroke(255, 0, 0);
-  ellipse(200, 150, 80, 80);
-}
+// R マーク
+stroke(255, 255, 255);
+fill(255, 255, 255);
+rect(83, 35, 15, 140); // 縦棒
+rect(93, 35, 43, 15);  // 横棒(上)
+rect(93, 90, 43, 15); // 横棒(下)
+arc(136, 70, 70, 70, -HALF_PI, HALF_PI); // 半円(白、外側)
+fill(160, 42, 39);
+arc(136, 70, 40, 40, -HALF_PI, HALF_PI); // 半円(赤、内側)
+fill(255, 255, 255);
+quad(99, 105, 114, 105, 176, 175, 161, 175);
+textSize(15);
+text("RITSUMEIKAN", 80, 200);
+text("UNIVERSITY", 85, 220);
