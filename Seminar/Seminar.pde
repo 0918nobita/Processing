@@ -12,7 +12,7 @@ arc(136, 70, 70, 70, -HALF_PI, HALF_PI); // 半円(白、外側)
 fill(160, 42, 39);
 arc(136, 70, 40, 40, -HALF_PI, HALF_PI); // 半円(赤、内側)
 fill(255, 255, 255);
-quad(99, 105, 114, 105, 176, 175, 161, 175);
+quad(99, 105, 114, 105, 176, 175, 161, 175); // 斜めの棒
 textSize(15);
 text("RITSUMEIKAN", 80, 200);
-text("UNIVERSITY", 85, 220);
+text("UNIVERSITY", 86, 220);
