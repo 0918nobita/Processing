@@ -1,19 +1,22 @@
+float theta = PI / 3;
 int x = 0,
-    y = 100;
+    y = 0;
 
 void setup() {
-  size(600, 300);  
+  size(600, 300); 
 }
 
 void draw() {
   background(255, 255, 255);
-  // 車体の描画
-  fill(111, 160, 255);
-  rect(x, y, 100, 50);
-  rect(x - 50, y + 50, 200, 50);
-  // 車輪の描画
-  fill(71, 72, 75);
-  ellipse(x, y + 100, 50, 50);
-  ellipse(x + 100, y + 100, 50, 50);
-  if (x < width) x++;
+  fill(255, 0, 0);
+  ellipse(x, y, 20, 20);
+  
+  // 移動
+  if (x < width) {
+    x += 3 * cos(theta);
+    y += 3 * sin(theta);
+  }
+  
+  // 跳ね返り
+  if (y < 0|| y > height) theta = 2 * PI - theta;
 }
