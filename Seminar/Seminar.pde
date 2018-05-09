@@ -7,9 +7,11 @@ void setup() {
 
 void draw() {
   background(255, 255, 255);
+  // 車体の描画
   fill(111, 160, 255);
   rect(x, y, 100, 50);
   rect(x - 50, y + 50, 200, 50);
+  // 車輪の描画
   fill(71, 72, 75);
   ellipse(x, y + 100, 50, 50);
   ellipse(x + 100, y + 100, 50, 50);
