@@ -1,12 +1,17 @@
-int x = 0;
+int x = 0,
+    y = 100;
 
 void setup() {
-  size(400, 300);  
+  size(600, 300);  
 }
 
 void draw() {
   background(255, 255, 255);
+  fill(111, 160, 255);
+  rect(x, y, 100, 50);
+  rect(x - 50, y + 50, 200, 50);
+  fill(71, 72, 75);
+  ellipse(x, y + 100, 50, 50);
+  ellipse(x + 100, y + 100, 50, 50);
   if (x < width) x++;
-  fill(255, 0, 0);
-  ellipse(x, 150, 40, 40);
 }
