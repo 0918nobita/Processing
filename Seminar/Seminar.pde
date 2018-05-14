@@ -1,3 +1,7 @@
+/**
+ * 船が川の両岸で跳ね返りながら、画面左端から右端に移動するアニメーション
+ */
+
 import java.util.Iterator;
 
 float theta = PI / 3; // 船の傾き
@@ -6,7 +10,7 @@ float theta = PI / 3; // 船の傾き
 int x = 0,
     y = 60;
 
-// 水流の線のオブジェクトを保持する
+// 水流を表す白線オブジェクトを保持する
 ArrayList<WaterCurrent> waterCurrentList = new ArrayList<WaterCurrent>();
 
 void setup() {
