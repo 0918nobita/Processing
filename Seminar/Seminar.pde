@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 float theta = PI / 3; // 船の傾き
 
 // 船の座標
@@ -19,15 +21,14 @@ void draw() {
   rect(0, 0, width, 20);
   rect(0, height - 20, width, 20);
   
-  stroke(255, 255, 255);
   if (frameCount % 45 == 0)
-    waterCurrentList.add(new WaterCurrent()); // 水流の線を追加する
+    waterCurrentList.add(new WaterCurrent()); // 白線オブジェクトを追加
   
-  for (int i = 0; i < waterCurrentList.size(); i++) {
-    // それぞれの水流の線の座標を更新する
-    waterCurrentList.get(i).update();
-    // 画面外に出た線を消す
-    if (waterCurrentList.get(i).getX() > width) waterCurrentList.remove(i);
+  // 各白線オブジェクトの座標を更新し、画面右端からはみ出たものは削除
+  for (Iterator itr = waterCurrentList.iterator(); itr.hasNext();) {
+    WaterCurrent waterCurrent = (WaterCurrent) itr.next();
+    waterCurrent.update();
+    if (waterCurrent.getX() > width) itr.remove();
   }
   
   // 船の座標を移動
@@ -61,7 +62,7 @@ void draw() {
   arc(0, 0, 70, 40, 0, HALF_PI);
 }
 
-// 水流を表す線のクラス
+// 水流を表す白線のクラス
 class WaterCurrent {
   int x, y;
   
@@ -73,6 +74,7 @@ class WaterCurrent {
   // 座標を更新する
   void update() {
     strokeWeight(2);
+    stroke(255, 255, 255);
     line(x, y, x + 120, y);
     x += 5;
   }
