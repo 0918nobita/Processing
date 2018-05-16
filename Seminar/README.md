@@ -12,3 +12,9 @@
 | 立命館大学のマーク | [こちら](https://github.com/0918nobita/Processing-Note/blob/24bf8bf7ff4e61da579ad885c50cd8cc921fc3ee/Seminar/Seminar.pde) |
 | 家, Jリーグ / 2020 東京五輪のロゴ, 車 | [こちら](https://github.com/0918nobita/Processing-Note/blob/8b54549a9d2fafa98053f8011e21da59a2fb13e1/Seminar/Seminar.pde) |
 | 画面中央に円を描画する | [こちら](https://github.com/0918nobita/Processing-Note/blob/5229febc0171aacb715f3d28927132fb4d5cda5e/Seminar/Seminar.pde) |
+| マウスカーソルに円を描画し続ける | [こちら](https://github.com/0918nobita/Processing-Note/blob/345836dcf986c0e4e2f9fd4748187966105c3eb4/Seminar/Seminar.pde) |
+| 現在のマウスカーソルの位置だけに円を継続して描画する | [こちら](https://github.com/0918nobita/Processing-Note/blob/891bb3a7af227d35deebdaeff73283a2823e3937/Seminar/Seminar.pde) |
+| 円が画面左端から右端まで移動するアニメーション | [こちら](https://github.com/0918nobita/Processing-Note/blob/057b856af67302714c50b4f144d5e03d67341548/Seminar/Seminar.pde) |
+| 車が画面左端から右端まで移動するアニメーション | [こちら](https://github.com/0918nobita/Processing-Note/blob/67fe6911aa2bf0981530a8d5b8e2ac8cd8873c91/Seminar/Seminar.pde) |
+| 円が斜めに移動し、跳ね返りながら左から右に移動していくアニメーション | [こちら](https://github.com/0918nobita/Processing-Note/blob/2053105d80948e8de687b71437de425da107d042/Seminar/Seminar.pde) |
+| 船が川の両岸で跳ね返りながら左から右に進んでいくアニメーション | [こちら](https://github.com/0918nobita/Processing-Note/blob/e55cddf8f20d6be1e72ffd8e802207e5019daa04/Seminar/Seminar.pde) |
