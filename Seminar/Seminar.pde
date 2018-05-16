@@ -1,10 +1,19 @@
-int a = 0;
-int b = -3;
+void setup() {
+  size(300, 300);
+  noStroke();
+}
 
-if (a < b) {
-  println("最初の条件が true でした");
-} else if (a == b) {
-  println("2 番目の条件が true でした");
-} else {
-  println("最後の条件が true でした");
+void draw() {
+  if (mouseY < 150) {
+    if (mouseX < 100) {
+      fill(255, 0, 0);
+    } else if (mouseX >= 100 && mouseX < 200) {
+      fill(0, 255, 0);
+    } else {
+      fill(0, 0, 255);
+    }
+  } else {
+    fill(255, 255, 255);
+  }
+  ellipse(mouseX, mouseY, 10, 10);
 }
