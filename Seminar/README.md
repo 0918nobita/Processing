@@ -18,3 +18,4 @@
 | 車が画面左端から右端まで移動するアニメーション | [こちら](https://github.com/0918nobita/Processing-Note/blob/67fe6911aa2bf0981530a8d5b8e2ac8cd8873c91/Seminar/Seminar.pde) |
 | 円が斜めに移動し、跳ね返りながら左から右に移動していくアニメーション | [こちら](https://github.com/0918nobita/Processing-Note/blob/2053105d80948e8de687b71437de425da107d042/Seminar/Seminar.pde) |
 | 船が川の両岸で跳ね返りながら左から右に進んでいくアニメーション | [こちら](https://github.com/0918nobita/Processing-Note/blob/e55cddf8f20d6be1e72ffd8e802207e5019daa04/Seminar/Seminar.pde) |
+| 条件分岐-14 | [こちら](https://github.com/0918nobita/Processing-Note/blob/fb6356d8f819a9986356ce675e91f5b3b44048f9/Seminar/Seminar.pde) |
