@@ -1,25 +1,26 @@
-int x = 0,
-    y = 0;
+int flag = 0;
 
 void setup() {
-  size(400, 400);
-  fill(255, 0, 0);
+  size(300, 300);
+  background(255, 0, 0);
 }
 
 void draw() {
-  background(255, 255, 255);
-
-  if (mouseX > x) {
-    x++;
-  } else if (mouseX < x) {
-    x--;
+  switch (flag) {
+    case 0:
+      background(255, 0, 0);
+      break;
+    case 1:
+      background(0, 255, 0);
+      break;
+    default:
+      background(0, 0, 255);
+      break;
   }
+  println("flag: " + flag);
+}
 
-  if (mouseY > y) {
-    y++;
-  } else if (mouseY < y) {
-    y--;
-  }
-  
-  ellipse(x, y, 10, 10);
+void mousePressed() {
+  flag++;
+  if (flag == 3) flag = 0;
 }
