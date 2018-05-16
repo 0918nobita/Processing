@@ -1,19 +1,25 @@
+int x = 0,
+    y = 0;
+
 void setup() {
-  size(300, 300);
-  noStroke();
+  size(400, 400);
+  fill(255, 0, 0);
 }
 
 void draw() {
-  if (mouseY < 150) {
-    if (mouseX < 100) {
-      fill(255, 0, 0);
-    } else if (mouseX >= 100 && mouseX < 200) {
-      fill(0, 255, 0);
-    } else {
-      fill(0, 0, 255);
-    }
-  } else {
-    fill(255, 255, 255);
+  background(255, 255, 255);
+
+  if (mouseX > x) {
+    x++;
+  } else if (mouseX < x) {
+    x--;
   }
-  ellipse(mouseX, mouseY, 10, 10);
+
+  if (mouseY > y) {
+    y++;
+  } else if (mouseY < y) {
+    y--;
+  }
+  
+  ellipse(x, y, 10, 10);
 }
