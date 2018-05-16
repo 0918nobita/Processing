@@ -20,3 +20,4 @@
 | 船が川の両岸で跳ね返りながら左から右に進んでいくアニメーション | [こちら](https://github.com/0918nobita/Processing-Note/blob/e55cddf8f20d6be1e72ffd8e802207e5019daa04/Seminar/Seminar.pde) |
 | 条件分岐-14 | [こちら](https://github.com/0918nobita/Processing-Note/blob/fb6356d8f819a9986356ce675e91f5b3b44048f9/Seminar/Seminar.pde) |
 | 条件分岐-18 | [こちら](https://github.com/0918nobita/Processing-Note/blob/71eb6f07d1072f72a3e35c727512c0f012447298/Seminar/Seminar.pde) |
+| 条件分岐-23 | [こちら](https://github.com/0918nobita/Processing-Note/blob/ca866ecd3408bcaa2a7a5093e068c360e8737e9e/Seminar/Seminar.pde) |
