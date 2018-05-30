@@ -48,15 +48,13 @@ void draw() {
     for (int d = -1; d <= 1; d++) {
       translate(r * 120, d * 120, 0);
       rotateX(PI * 0.8);
+      
       if (!moveToTheRight) scale(-1, 1);
-      fill(33, 87, 157);
-      rect(-50, 0, 52, 20);
-      fill(240, 240, 240);
-      rect(-35, -20, 35, 20);
-      line(-50, 0, 35, 0);
-      fill(33, 87, 157);
-      arc(0, 0, 70, 40, 0, HALF_PI);
+      
+      drawBoat();
+      
       if (!moveToTheRight) scale(-1, 1);
+      
       rotateX(-PI * 0.8);
       translate(-r * 120, -d * 120, 0);
     }
@@ -72,6 +70,17 @@ void draw() {
   } else if (!moveToTheRight && x <= -800) {
     moveToTheRight = true;
   }
+}
+
+// 船の描画
+void drawBoat() {
+  fill(33, 87, 157);
+  rect(-50, 0, 52, 20);
+  fill(240, 240, 240);
+  rect(-35, -20, 35, 20);
+  line(-50, 0, 35, 0);
+  fill(33, 87, 157);
+  arc(0, 0, 70, 40, 0, HALF_PI);
 }
 
 // 水流を表す白線のクラス
