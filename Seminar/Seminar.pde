@@ -1,30 +1,14 @@
-boolean showSplit = false;
-
-int startTime,
-    lastTime = 0;
-
 void setup() {
-  size(500, 300);
-  textSize(150);
-  startTime = getCurrentTime();
+  size(400, 400);
 }
 
 void draw() {
   background(255, 255, 255);
-  if (!showSplit) {
-    fill(0, 0, 255);
-    text(nf(getCurrentTime() - startTime, 3), 100, 200);
-  } else {
-    fill(255, 0, 0);
-    text(nf(lastTime - startTime, 3), 100, 200);
-  }
+  packman(mouseX, mouseY, 60, 255, 255, 40);
 }
 
-void mousePressed() {
-  if (!showSplit) lastTime = getCurrentTime();
-  showSplit = !showSplit;
-}
-
-int getCurrentTime() {
-  return (hour() * 60 + minute()) * 60 + second();
+void packman(float x, float y, float w, float r, float g, float b) {
+  noStroke();
+  fill(r, g, b);
+  arc(x, y, w, w, radians(30), radians(330));
 }
