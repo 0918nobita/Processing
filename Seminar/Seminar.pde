@@ -10,5 +10,6 @@ void draw() {
 void packman(float x, float y, float w, float r, float g, float b) {
   noStroke();
   fill(r, g, b);
-  arc(x, y, w, w, radians(30), radians(330));
+  for (int i = -70; i <= 70; i += 70)
+    arc(x + i, y, w, w, radians(30), radians(330));
 }
