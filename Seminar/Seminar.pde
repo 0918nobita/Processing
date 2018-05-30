@@ -1,6 +1,3 @@
-float r = 10;
-float theta = 72;
-float x = r * cos(theta);
-float y = r * sin(theta);
-println(x);
-println(y);
+size(200, 200);
+for (int i = 0; i < 30; i++)
+  ellipse(random(200), random(200), 10, 10);
