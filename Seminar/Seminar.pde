@@ -1,5 +1,6 @@
-float afterX = 0,
-      afterY = 0; // 残像の X, Y 座標
+boolean isPressed = false;
+
+int r = 0, g = 0, b = 0;
 
 void setup() {
   size(400, 400);
@@ -7,14 +8,22 @@ void setup() {
 
 void draw() {
   background(255, 255, 255);
-  packman(afterX, afterY, 60, 0, 0, 0);
-  packman(mouseX, mouseY, 60, 255, 255, 40);
+  if (isPressed) packman(mouseX, mouseY, 60, r, g, b);
 }
 
 void packman(float x, float y, float w, float r, float g, float b) {
   noStroke();
   fill(r, g, b);
   arc(x, y, w, w, radians(30), radians(330));
-  afterX = x;
-  afterY = y;
+}
+
+void mousePressed() {
+  isPressed = true;
+  r = (int) random(255);
+  g = (int) random(255);
+  b = (int) random(255);
+}
+
+void mouseReleased() {
+  isPressed = false;
 }
