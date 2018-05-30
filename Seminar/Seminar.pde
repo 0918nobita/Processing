@@ -1,3 +1,7 @@
-size(200, 200);
-for (int i = 0; i < 30; i++)
-  ellipse(random(200), random(200), 10, 10);
+int factorial(int n) {
+  return (n == 0) ? 1 : n * factorial(n - 1);
+}
+
+void setup() {
+  println(factorial(5));
+}
