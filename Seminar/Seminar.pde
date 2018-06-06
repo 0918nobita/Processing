@@ -9,7 +9,10 @@ void setup() {
 void draw() {
   background(255);
   fill(255, 0, 0);
-  for (int i = 0; i < 30; i++) ellipse(xs[i], 300, 30, 30);
+  for (int i = 0; i < 30; i++) {
+    ellipse(xs[i], 300, 30, 30);
+    xs[i] += 2;
+  }
   if (x > mouseX) x--;
   if (x < mouseX) x++;
   if (y > mouseY) y--;
