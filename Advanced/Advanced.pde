@@ -51,7 +51,7 @@ void draw() {
       
       if (!moveToTheRight) scale(-1, 1);
       
-      drawBoat();
+      drawChar();
       
       if (!moveToTheRight) scale(-1, 1);
       
@@ -73,7 +73,7 @@ void draw() {
 }
 
 // 船の描画
-void drawBoat() {
+void drawChar() {
   fill(33, 87, 157);
   rect(-50, 0, 52, 20);
   fill(240, 240, 240);
