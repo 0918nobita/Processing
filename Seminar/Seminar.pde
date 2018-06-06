@@ -1,29 +1,19 @@
-boolean isPressed = false;
-
-int r = 0, g = 0, b = 0;
+int [] xs = new int[30];
+int x = 400, y = 250;
 
 void setup() {
-  size(400, 400);
+  size(800, 500);
+  for (int i = 0; i < 30; i++) xs[i] = (int) random(800);
 }
 
 void draw() {
-  background(255, 255, 255);
-  if (isPressed) packman(mouseX, mouseY, 60, r, g, b);
-}
-
-void packman(float x, float y, float w, float r, float g, float b) {
-  noStroke();
-  fill(r, g, b);
-  arc(x, y, w, w, radians(30), radians(330));
-}
-
-void mousePressed() {
-  isPressed = true;
-  r = (int) random(255);
-  g = (int) random(255);
-  b = (int) random(255);
-}
-
-void mouseReleased() {
-  isPressed = false;
+  background(255);
+  fill(255, 0, 0);
+  for (int i = 0; i < 30; i++) ellipse(xs[i], 300, 30, 30);
+  if (x > mouseX) x--;
+  if (x < mouseX) x++;
+  if (y > mouseY) y--;
+  if (y < mouseY) y++;
+  fill(0);
+  ellipse(x, y, 20, 20);
 }
