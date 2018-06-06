@@ -4,6 +4,7 @@ int x = 400, y = 250;
 
 void setup() {
   size(800, 500);
+  
   for (int i = 0; i < 30; i++) {
     xs[i] = (int) random(800);
     vec[i] = (int) random(-3, 3);
@@ -12,15 +13,23 @@ void setup() {
 
 void draw() {
   background(255);
+  
   fill(255, 0, 0);
+
   for (int i = 0; i < 30; i++) {
     ellipse(xs[i], 300, 30, 30);
     xs[i] += vec[i];
+    
+    if (xs[i] < 0) xs[i] = width;
+    
+    if (xs[i] > width) xs[i] = 0;
   }
+  
   if (x > mouseX) x--;
   if (x < mouseX) x++;
   if (y > mouseY) y--;
   if (y < mouseY) y++;
+  
   fill(0);
   ellipse(x, y, 20, 20);
 }
