@@ -1,9 +1,13 @@
 int [] xs = new int[30];
+int[] vec = new int[30];
 int x = 400, y = 250;
 
 void setup() {
   size(800, 500);
-  for (int i = 0; i < 30; i++) xs[i] = (int) random(800);
+  for (int i = 0; i < 30; i++) {
+    xs[i] = (int) random(800);
+    vec[i] = (int) random(-3, 3);
+  }
 }
 
 void draw() {
@@ -11,7 +15,7 @@ void draw() {
   fill(255, 0, 0);
   for (int i = 0; i < 30; i++) {
     ellipse(xs[i], 300, 30, 30);
-    xs[i] += 2;
+    xs[i] += vec[i];
   }
   if (x > mouseX) x--;
   if (x < mouseX) x++;
