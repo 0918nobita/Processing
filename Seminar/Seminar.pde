@@ -1,48 +1,35 @@
-int []  xs = new int[30],
-       vec = new int[30];
+final int X = 0, Y = 1;
 
-int x = 400,
-    y = 250;
-
-boolean isCrashing = false;
+float [][] coord = new float[30][2],  // それぞれの円の x, y 座標
+             vec = new float[30][2];  // それぞれの円の x, y 方向の移動速度
 
 void setup() {
   size(800, 500);
   
   for (int i = 0; i < 30; i++) {
-    xs[i] = (int) random(800);
-    vec[i] = (int) random(-3, 3);
+    coord[i][X] = random(800);
+    coord[i][Y] = random(500);
+
+    vec[i][X] = random(-3, 3);
+    vec[i][Y] = random(-3, 3);
   }
 }
 
 void draw() {
-  if (isCrashing) background(255, 255, 33);
-  else background(255);
-  
-  isCrashing = false;
+  background(255);
 
   fill(255, 0, 0);
 
   for (int i = 0; i < 30; i++) {
-    ellipse(xs[i], 300, 30, 30);
-    xs[i] += vec[i];
+    ellipse(coord[i][X], coord[i][Y], 30, 30);
     
-    if (xs[i] < 0) xs[i] = width;
+    coord[i][X] += vec[i][X];
+    coord[i][Y] += vec[i][Y];
     
-    if (xs[i] > width) xs[i] = 0;
+    if (coord[i][X] < 0) coord[i][X] = width;
+    if (coord[i][X] > width) coord[i][X] = 0;
 
-    if (!isCrashing && crash(x, y, xs[i], 300)) isCrashing = true;
+    if (coord[i][Y] < 0) coord[i][Y] = height;
+    if (coord[i][Y] > height) coord[i][Y] = 0;
   }
-  
-  if (x > mouseX) x--;
-  if (x < mouseX) x++;
-  if (y > mouseY) y--;
-  if (y < mouseY) y++;
-  
-  fill(0);
-  ellipse(x, y, 20, 20);
-}
-
-boolean crash(int x1, int y1, int x2, int y2) {
-  return (sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2)) < 20);
 }
