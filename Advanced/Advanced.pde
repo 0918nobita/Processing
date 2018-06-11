@@ -1,19 +1,30 @@
 /*
- * 第 4 回課題 ( 発展版 )
- * 複数の船が、並んで川を上ったり下ったりするアニメーション(3D)
+ * 初期座標 (x, y, z) 、速度ベクトル、色の異なる円が、
+ * 個々に上下左右で反射しながら移動するアニメーション
  */
 
-import java.util.Iterator;
-
-float x = -400;
-boolean moveToTheRight = true;
-
-// 水流を表す白線オブジェクトを保持する
-ArrayList<WaterCurrent> waterCurrentList = new ArrayList<WaterCurrent>();
+final int n = 50;
+RGBColor[] cols;
+float[] xs, ys, zs, vx, vy;
 
 void setup() {
   size(1000, 600, P3D);
   frameRate(60);
+  cols = new RGBColor[n];
+  xs = new float[n];
+  ys = new float[n];
+  zs = new float[n];
+  vx = new float[n];
+  vy = new float[n];
+  
+  for (int i = 0; i < n; i++) {
+    cols[i] = new RGBColor((int) random(255), (int) random(255), (int) random(255));
+    xs[i] = random(-350, 350);
+    ys[i] = random(-200, 200);
+    zs[i] = random(-50, 0);
+    vx[i] = random(-2, 2);
+    vy[i] = random(-2, 2);
+  }
 }
 
 void draw() {
@@ -21,55 +32,53 @@ void draw() {
   translate(width / 2, height / 2);
   rotateX(-PI * 0.8);
   stroke(200, 100, 100);
+  
+  // 罫線を描画する
   for (int x = -900; x < 900; x += 50) line(x, -900, 1, x, 900, 1);
   for (int y = -900; y < 900; y += 50) line(-900, y, 1, 900, y, 1);
-  fill(115, 205, 244);
+  
+  // 灰色の床を描画する
+  fill(80, 80, 80);
   noStroke();
   rectMode(CENTER);
-  rect(0, 0, 1250, 400);
+  rect(0, 0, 700, 400);
   
-  if (frameCount % 45 == 0)
-    waterCurrentList.add(new WaterCurrent()); // 45フレーム毎に白線オブジェクトを追加
-  
-  // 各白線オブジェクトの座標を更新して描画し、画面右端からはみ出たものは削除
-  for (Iterator itr = waterCurrentList.iterator(); itr.hasNext();) {
-    WaterCurrent waterCurrent = (WaterCurrent) itr.next();
-    waterCurrent.update();
-    if (waterCurrent.getX() > 625) itr.remove();
-  }
-  
+  translate(0, 0, -5);
   rectMode(CORNER);
   stroke(0);
   strokeWeight(1);
-  translate(x, 0, -12);
+  fill(255, 0, 0);
   
-  // 複数の船の描画
-  for (int r = -1; r <= 1; r++) {
-    for (int d = -1; d <= 1; d++) {
-      translate(r * 120, d * 120, 0);
-      rotateX(PI * 0.8);
-      
-      if (!moveToTheRight) scale(-1, 1);
-      
-      drawChar();
-      
-      if (!moveToTheRight) scale(-1, 1);
-      
-      rotateX(-PI * 0.8);
-      translate(-r * 120, -d * 120, 0);
+  for (int i = 0; i < n; i++) {
+    RGBColor col = cols[i];
+    fill(col.getR(), col.getG(), col.getB());
+    
+    translate(0, 0, zs[i]);
+    
+    ellipse(xs[i], ys[i], 30, 30);
+    
+    xs[i] += vx[i];
+    ys[i] += vy[i];
+    
+    if (xs[i] < -340) {
+      xs[i] = -340;
+      vx[i] = -vx[i];
+    } else if (xs[i] > 340) {
+      xs[i] = 340;
+      vx[i] = -vx[i];
     }
+    
+    if (ys[i] < -190) {
+      ys[i] = -190;
+      vy[i] = -vy[i];
+    } else if (ys[i] > 190) {
+      ys[i] = 190;
+      vy[i] = -vy[i];
+    }
+    
+    translate(0, 0, -zs[i]);
   }
   
-  // 移動
-  if (moveToTheRight) x += 2;
-  else x --;
-  
-  // 方向転換
-  if (moveToTheRight && x >= 790) {
-    moveToTheRight = false;
-  } else if (!moveToTheRight && x <= -800) {
-    moveToTheRight = true;
-  }
 }
 
 // 船の描画
@@ -83,22 +92,17 @@ void drawChar() {
   arc(0, 0, 70, 40, 0, HALF_PI);
 }
 
-// 水流を表す白線のクラス
-class WaterCurrent {
-  int x, y;
-
-  WaterCurrent() {
-    this.x = -725;
-    this.y = ((int) random(290)) + 30 - 175;
+// 色を表すクラス
+class RGBColor {
+  int r, g, b;
+  
+  RGBColor(int r, int g, int b) {
+    this.r = r;
+    this.g = g;
+    this.b = b;
   }
-
-  // 座標を更新し、描画する
-  void update() {
-    strokeWeight(2);
-    stroke(255, 255, 255);
-    line(x, y, x + 100, y);
-    x += 5;
-  }
-
-  int getX() { return x; }
+  
+  int getR() { return r; }
+  int getG() { return g; }
+  int getB() { return b; }
 }
