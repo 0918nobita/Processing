@@ -4,27 +4,25 @@
  */
 
 final int count = 50;
-RGBColor[] cols;
-float[] xs, ys, zs, vx, vy;
+Color[] colors;
+Marble[] marbles;
 
 void setup() {
     size(1000, 600, P3D);
     frameRate(60);
 
-    cols = new RGBColor[count];
-    xs = new float[count];
-    ys = new float[count];
-    zs = new float[count];
-    vx = new float[count];
-    vy = new float[count];
+    colors = new Color[count];
+    marbles = new Marble[count];
 
     for (int i = 0; i < count; i++) {
-        cols[i] = new RGBColor((int) random(255), (int) random(255), (int) random(255));
-        xs[i] = random(-350, 350);
-        ys[i] = random(-200, 200);
-        zs[i] = random(-50, 0);
-        vx[i] = random(-2, 2);
-        vy[i] = random(-2, 2);
+        colors[i] = new Color((int) random(255), (int) random(255), (int) random(255));
+        MarbleBuilder builder = new MarbleBuilder();
+        builder.x(random(-350, 350));
+        builder.y(random(-200, 200));
+        builder.z(random(-50, 0));
+        builder.vx(random(-2, 2));
+        builder.vy(random(-2, 2));
+        marbles[i] = builder.getResult();
     }
 }
 
@@ -51,47 +49,32 @@ void draw() {
     fill(255, 0, 0);
 
     for (int i = 0; i < count; i++) {
-        RGBColor col = cols[i];
-        fill(col.getR(), col.getG(), col.getB());
+        Color clr = colors[i];
+        fill(clr.r(), clr.g(), clr.b());
 
-        translate(0, 0, zs[i]);
+        translate(0, 0, marbles[i].z);
 
-        ellipse(xs[i], ys[i], 30, 30);
+        ellipse(marbles[i].x, marbles[i].y, 30, 30);
 
-        xs[i] += vx[i];
-        ys[i] += vy[i];
+        marbles[i].advance();
 
-        if (xs[i] < -340) {
-            xs[i] = -340;
-            vx[i] = -vx[i];
-        } else if (xs[i] > 340) {
-            xs[i] = 340;
-            vx[i] = -vx[i];
+        // 跳ね返りの計算
+        if (marbles[i].x < -340) {
+            marbles[i].x = -340;
+            marbles[i].vx = marbles[i].vx * (-1);
+        } else if (marbles[i].x > 340) {
+            marbles[i].x = 340;
+            marbles[i].vx = marbles[i].vx * (-1);
         }
 
-        if (ys[i] < -190) {
-            ys[i] = -190;
-            vy[i] = -vy[i];
-        } else if (ys[i] > 190) {
-            ys[i] = 190;
-            vy[i] = -vy[i];
+        if (marbles[i].y < -190) {
+            marbles[i].y = -190;
+            marbles[i].vy = marbles[i].vy * (-1);
+        } else if (marbles[i].y > 190) {
+            marbles[i].y = 190;
+            marbles[i].vy = marbles[i].vy * (-1);
         }
 
-        translate(0, 0, -zs[i]);
+        translate(0, 0, marbles[i].z * (-1));
     }
-}
-
-// 色を表すクラス
-class RGBColor {
-    int r, g, b;
-
-    RGBColor(int r, int g, int b) {
-        this.r = r;
-        this.g = g;
-        this.b = b;
-    }
-
-    int getR() { return r; }
-    int getG() { return g; }
-    int getB() { return b; }
 }
