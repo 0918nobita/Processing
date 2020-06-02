@@ -6,7 +6,7 @@
 
 import java.util.Arrays;
 
-final int n = 50,        // 赤い円の個数
+final int enemyCount = 50,        // 赤い円の個数
           MAX_HP = 200,  // 最大 HP
           flagRows = 7;  // フラグの縦の個数 (= 横の個数)
 
@@ -31,14 +31,14 @@ void setup() {
 }
 
 void initialize() {
-    xs = new float[n];
-    ys = new float[n];
-    vx = new float[n];
-    vy = new float[n];
+    xs = new float[enemyCount];
+    ys = new float[enemyCount];
+    vx = new float[enemyCount];
+    vy = new float[enemyCount];
 
     flag = new boolean[flagRows][flagRows];
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < enemyCount; i++) {
         xs[i] = random(width);
         ys[i] = random(height);
         vx[i] = random(-2, 2);
@@ -93,7 +93,7 @@ void draw() {
     stroke(0);
 
     // それぞれの赤い円の移動と当たり判定
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < enemyCount; i++) {
         ellipse(xs[i], ys[i], 20, 20);
         xs[i] += vx[i];
         ys[i] += vy[i];
